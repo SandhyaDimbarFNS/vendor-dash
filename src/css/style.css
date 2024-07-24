@@ -215,3 +215,11 @@ span.flatpickr-weekday,
 [x-cloak] {
   display: none !important;
 }
+
+.coupon{
+  @apply text-6xl text-red-500;
+}
+
+.manage-coupons-table tr{
+  @apply hover:bg-gray-2 dark:hover:bg-meta-4 ease-in duration-300;
+}
