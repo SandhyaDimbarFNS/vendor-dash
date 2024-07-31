@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template
+    </title>
+  </head>
+
+  <body
+    x-data="{ page: 'formElements', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+    <!-- ===== Preloader Start ===== -->
+    <include src="./partials/preloader.html"></include>
+    <!-- ===== Preloader End ===== -->
+
+    <!-- ===== Page Wrapper Start ===== -->
+    <div class="flex h-screen overflow-hidden">
+      <!-- ===== Sidebar Start ===== -->
+      <include src="./partials/sidebar.html"></include>
+      <!-- ===== Sidebar End ===== -->
+
+      <!-- ===== Content Area Start ===== -->
+      <div
+        class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+      >
+        <!-- ===== Header Start ===== -->
+        <include src="./partials/header.html" />
+        <!-- ===== Header End ===== -->
+
+        <!-- ===== Main Content Start ===== -->
+        <main>
+          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- Breadcrumb Start -->
+            <div
+              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Staff-management
+              </h2>
+
+              <nav>
+                <ol class="flex items-center gap-2">
+                  <li>
+                    <a class="font-medium" href="index.html">Dashboard /</a>
+                  </li>
+                  <li class="font-medium text-primary">Staff-management</li>
+                </ol>
+              </nav>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <!-- ====== Form Elements Section Start -->
+
+            <div class="flex flex-col gap-9">
+              <!-- Invite section Start-->
+              <div
+                class="rounded-sm border border-stroke bg-white p-4 shadow-default dark:border-strokedark dark:bg-boxdark dark:text-white"
+              >
+                <div class="mb-8">
+                  <h2
+                    class="mb-4 text-xl font-semibold text-black dark:text-white"
+                  >
+                    Invite Staff Member
+                  </h2>
+                  <div class="flex flex-col gap-4 md:flex-row">
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      class="border-gray-300 flex-grow rounded-md border border-stroke px-3 py-2 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      class="border-gray-300 flex-grow rounded-md border border-stroke px-3 py-2 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
+                    <button
+                      type="button"
+                      class="flex justify-center rounded bg-primary px-6 py-2 font-medium text-gray hover:bg-opacity-90"
+                    >
+                      Invite
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Invite section end -->
+
+              <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Permissions
+              </h2>
+
+              <!-- John doe -->
+              <div
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark dark:text-white"
+              >
+                <div class="border-b border-stroke px-6.5 py-4">
+                  <h3 class="font-medium text-black dark:text-white">
+                    John Doe
+                  </h3>
+                </div>
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Products
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Orders
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Shipping Address
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Other Staff
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- John smith -->
+              <div
+                class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark dark:text-white"
+              >
+                <div class="border-b border-stroke px-6.5 py-4">
+                  <h3 class="font-medium text-black dark:text-white">
+                    John Smith
+                  </h3>
+                </div>
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Products
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsSmithAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsSmithAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsSmithEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsSmithEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="productsSmithDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="productsSmithDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Orders
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersSmithAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersSmithAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersSmithEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersSmithEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="ordersSmithDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="ordersSmithDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Shipping Address
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingSmithAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingSmithAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingSmithEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingSmithEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="shippingSmithDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="shippingSmithDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-5.5 p-6.5">
+                  <div
+                    class="flex flex-col justify-between sm:flex-row sm:items-center"
+                  >
+                    <h4
+                      class="mb-2 mr-8 w-full text-sm font-medium text-black dark:text-white sm:mb-0 sm:w-1/3"
+                    >
+                      Other Staff
+                    </h4>
+                    <div class="flex w-full flex-wrap gap-4 sm:w-2/4">
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffSmithAdd"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffSmithAdd"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Add
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffSmithEdit"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffSmithEdit"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Edit
+                        </label>
+                      </div>
+                      <div x-data="{ checkboxToggle: false }">
+                        <label
+                          for="otherStaffSmithDelete"
+                          class="flex cursor-pointer select-none items-center text-sm font-medium"
+                        >
+                          <div class="relative">
+                            <input
+                              type="checkbox"
+                              id="otherStaffSmithDelete"
+                              class="sr-only"
+                              @change="checkboxToggle = !checkboxToggle"
+                            />
+                            <div
+                              :class="checkboxToggle && 'border-primary bg-gray'"
+                              class="mr-4 flex h-5 w-5 items-center justify-center rounded border"
+                            >
+                              <span
+                                :class="checkboxToggle && 'bg-primary'"
+                                class="h-2.5 w-2.5 rounded-sm"
+                              ></span>
+                            </div>
+                          </div>
+                          Delete
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button  -->
+              <div class="flex justify-start">
+                <button
+                  class="flex justify-center rounded bg-primary px-6 py-2 font-medium text-gray hover:bg-opacity-90"
+                  type="submit"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+
+            <!-- ====== Form Elements Section End -->
+          </div>
+        </main>
+        <!-- ===== Main Content End ===== -->
+      </div>
+      <!-- ===== Content Area End ===== -->
+    </div>
+    <!-- ===== Page Wrapper End ===== -->
+  </body>
+</html>
